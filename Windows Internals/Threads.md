@@ -12,4 +12,6 @@ A thread includes the following essential components:
 - A unique identifier called a thread ID (part of an internal structure called client ID. Process IDs and thread IDs are generated out of the same namespace, so they never overlap).
 In addition, threads sometimes have their own security context, or token, which is often used by multi-threaded server applications that impersonate the security context of the clients that they serve.
 
-The volatile registr
+The volatile registers, stacks, and private storage area are called the thread's context. ==Because this information is different for each machine architecture that Windows runs on, this structure, by necessity, is architecture specific==
+
+
