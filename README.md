@@ -9,4 +9,6 @@ As you know, I like to write my notes in Obsidian. Feel free to clone this repo 
 ## Course Link
 [Certified Binary Fuzzing & Reversing Professional - The SecOps Group](https://pentestingexams.com/product/certified-binary-fuzzing-reversing-professional/)
 
+## If its not written down, its forgotten.
+
 
