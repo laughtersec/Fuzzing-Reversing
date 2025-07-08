@@ -24,4 +24,5 @@ Note: This is an analogy.
 | Tattoos for recognizing a gang member | Any communication will happen only between goons that are part of the same gang. Never snitch!         |
 | A Name                                | Gangs have a name to uniquely identify them from one another (like how PIDs are unique)                |
 | Goons                                 | Muscle that does the dirty work. They are the gang in action.                                          |
+
 ![[process.png]]
