@@ -14,7 +14,7 @@ It is a container for a set of resources used when executing the instance of the
 | A process ID                     | This is a unique identifier, which is internally part of an identifier called a client ID.                                                                                                                                                                                                                            |
 | At least one thread of execution | Although an "empty" process is possible, it is (mostly) not useful.                                                                                                                                                                                                                                                   |
 # Translation
-Note: This is an analogy
+Note: This is an analogy.
 
 | **Gang Assets**                       | Purpose                                                                                                |
 | ------------------------------------- | ------------------------------------------------------------------------------------------------------ |
