@@ -14,7 +14,7 @@ In addition, threads sometimes have their own security context, or token, which 
 
 The volatile registers, stacks, and private storage area are called the thread's context. ==Because this information is different for each machine architecture that Windows runs on, this structure, by necessity, is architecture specific==
 
-
+![[thread.png]]
 
 
 
