@@ -11,4 +11,3 @@ As you know, I like to write my notes in Obsidian. Feel free to clone this repo 
 
 ## If its not written down, its forgotten.
 
-

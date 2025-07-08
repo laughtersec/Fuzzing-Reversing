@@ -10,4 +10,4 @@ A thread includes the following essential components:
 - There are two stacks for each thread - user and kernel.
 - A private storage area called thread-local storage (TLS) for use by subsystems, run-time libraries, and DLLs.
 - A unique identifier called a thread ID (part of an internal structure called client ID. Process IDs and thread IDs are generated out of the same namespace, so they never overlap).
-In addition, threads sometimes have their own security context, or token, which is often used by 
+In addition, threads sometimes have their own security context, or token, which is often used by multi-threaded server applications that impersonate the security context of the clients that they serve.
