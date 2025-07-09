@@ -40,8 +40,6 @@ An access token is an object that describes the *security context* of a process 
 # Virtual Address Descriptor (VAD)
 A fundamental component in the [[Memory Management|memory managment]] system of Windows. Primarily, it is responsible for managing and tracking the memory allocations within a process's virtual address space. VADs reside within the private memory space of each process and are managed by the Windows Kernel as part of the process's Virtual Memory Control Block (VMCB).
 
-The structure of a VAD is a binary tree, with each node representing a block of virtual memory.
-
 It represents a layer of abstraction between the physical memory (RAM) installed in a computer and the memory addresses that software applications use. When a process allocates memory (like by using VirtualAlloc), an entry is created in the VAD tree.
 
-The structure of a VAD is a binary tree, with each node representing a block of virtual memory. These nodes contain crucial information about the memory block
+The structure of a VAD is a binary tree, with each node representing a block of virtual memory. These nodes contain crucial information about the memory block, including its starting address, size and state.
