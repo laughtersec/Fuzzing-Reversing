@@ -38,8 +38,10 @@ https://learn.microsoft.com/en-us/windows/win32/secauthz/access-tokens
 An access token is an object that describes the *security context* of a process or [[Threads|thread]]. The information in a token includes the identity and privileges of the user account associated with the process or thread. When a user logs on, the system verifies the user's password by comparing it with information stored in a security database. If the password is *authenticated*, the system produces an access token. Every process executed on behalf of this user has a copy of this access token.
 
 # Virtual Address Descriptor (VAD)
-A fundamental component in the [[Memory Management|memory managment]] system of Windows. Primarily, it is responsible for managing and tracking the memory allocations within a process's virtual address space. 
+A fundamental component in the [[Memory Management|memory managment]] system of Windows. Primarily, it is responsible for managing and tracking the memory allocations within a process's virtual address space. VADs reside within the private memory space of each process and are managed by the Windows Kernel as part of the process's Virtual Memory Control Block (VMCB).
 
 The structure of a VAD is a binary tree, with each node representing a block of virtual memory.
 
 It represents a layer of abstraction between the physical memory (RAM) installed in a computer and the memory addresses that software applications use. When a process allocates memory (like by using VirtualAlloc), an entry is created in the VAD tree.
+
+The structure of a VAD is a binary tree, with each node representing a block of virtual memory. These nodes contain crucial information about the memory block
