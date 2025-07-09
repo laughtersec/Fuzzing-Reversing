@@ -43,3 +43,5 @@ A fundamental component in the [[Memory Management|memory managment]] system of 
 It represents a layer of abstraction between the physical memory (RAM) installed in a computer and the memory addresses that software applications use. When a process allocates memory (like by using VirtualAlloc), an entry is created in the VAD tree.
 
 The structure of a VAD is a binary tree, with each node representing a block of virtual memory. These nodes contain crucial information about the memory block, including its starting address, size and state.
+
+An example: A DLL is loaded into a process, a VAD node is created to record its memory region, access permissions, and the file it's mapped to.
