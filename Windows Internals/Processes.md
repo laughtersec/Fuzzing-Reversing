@@ -35,4 +35,5 @@ Note: This is an analogy.
 # Access Tokens
 https://learn.microsoft.com/en-us/windows/win32/secauthz/access-tokens
 
-An access token is an object that describes the *security context* of a process or [[Threads|threads]]
+An access token is an object that describes the *security context* of a process or [[Threads|thread]]
+
