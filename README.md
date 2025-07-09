@@ -4,7 +4,7 @@ of "The SecOps Group"
 
 
 ## Personal Note
-As you know, I like to write my notes in Obsidian. Feel free to clone this repo with the help of Git plugins. Looks great with "Brainhack" theme.
+As you know, I like to write my notes in Obsidian. Feel free to clone this repo with the help of the Git plugin. Looks great with "Brainhack" theme.
 
 ## Course Link
 [Certified Binary Fuzzing & Reversing Professional - The SecOps Group](https://pentestingexams.com/product/certified-binary-fuzzing-reversing-professional/)
