@@ -33,5 +33,6 @@ Note: This is an analogy.
 ==The Windows API provides several functions for creating processes==. The simplest is `CreateProcess`, which attempts to create a process with the same access token as the creating process. If a different token is required, `CreateProcessAsUser` can be used, which accepts an extra argument (the first) - a handle to a token object that was already somehow obtained (for example, by calling the `LogonUser` function).
 
 # Access Tokens
-[Access Tokens - Win32 apps | Microsoft Learn](https://learn.microsoft.com/en-us/windows/win32/secauthz/access-tokens)
+https://learn.microsoft.com/en-us/windows/win32/secauthz/access-tokens
 
+An access token is an object that describes the *security context* of a process or [[Threads|threads]]
