@@ -11,4 +11,5 @@ In ==`Ntoskrnl.exe`==. It is the largest component in the executive, hinting at 
 - Six key top-level routines, each running in one of six different kernel-mode threads in the System process:
 	- **The balance set manager (KeBalanceSetManager, priority 17)**: This calls an inner routine, the working set manager (MmWorkingSetManager), once per second as well as when free memory falls below a certain threshold. The working set manager drives the overall memory-management policies, such as working set trimming, aging, and modified page writing.
 	- **The process/stack swapper (KeSwapProcessOrStack, priority 23)**: This performs both process and kernel thread stack inswapping and outswapping. The balance set manager and the thread-scheduling code in the kernel awaken this thread when an inswap or outswap operation needs to take place.
-	- **The modified page writer (MiModifiedPageWriter, pririoty 18):** This writes dirty pages on the modified list back to the appropriate paging files
+	- **The modified page writer (MiModifiedPageWriter, pririoty 18):** This writes dirty pages on the modified list back to the appropriate paging files. This thread is awakened when the size of the modified list needs to be reduced.
+	- **The mapped page writer (MiMappedPageWriter)
