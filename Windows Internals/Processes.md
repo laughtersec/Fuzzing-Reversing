@@ -54,4 +54,6 @@ The `EPROCESS` and most of its related data structures exist in system address s
 ## Various Structures
 
 - For each process that is executing a Windows program, the Windows subsystem process (Csrss) maintains a parallel structure called the CSR_PROCESS.
-- 
+- Windows subsystem (Win32k.sys) maintains a per-process data structure, `W32PROCESS`, which is created the first time a thread calls a Windows USER or GDI function that is implemented in kernel mode. This happens as soon as the User32.dll library is loaded (by calling functions like `CreateWindowEx`).
+- The Graphics Device Interface (GDI) component infrastructure causes the DirectX Graphics Kernel (Dxgkrnl.sys) to initialize a structure of its own, `DXGPROCESS`.
+Except for the idle process, ever `EPROCESS` structure is encapsulated as a process object by the executive object manager.
