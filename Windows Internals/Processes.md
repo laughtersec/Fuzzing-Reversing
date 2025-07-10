@@ -51,4 +51,7 @@ Each Windows process is represented by an executive process (`EPROCESS` structur
 
 The `EPROCESS` and most of its related data structures exist in system address space. ==One exception is the Process Environment Block (PEB)==, which exists in the process (user) address space (because it contains information accessed by user-mode code). Additionally, some of the process data structures used in memory management, such as the working set list, are valid only within the context of the current process, because they are stored in process-specific system space.
 
-For each process that is executing a Windows program, the Windows subsystem process (Csrss) maintains a parallel structure called the CSR_PROCESS.
+## Various Structures
+
+- For each process that is executing a Windows program, the Windows subsystem process (Csrss) maintains a parallel structure called the CSR_PROCESS.
+- 
