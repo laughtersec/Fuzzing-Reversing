@@ -47,4 +47,4 @@ The structure of a VAD is a binary tree, with each node representing a block of 
 An example: A DLL is loaded into a process, a VAD node is created to record its memory region, access permissions, and the file it's mapped to.
 
 # Internals
-Each Windows process is represented by an executive process (`EPROCESS` structure). Besides containing many attributes relating to a process (such as `UniqueProcessId`), an `EPROCESS` contains and points to a number of other related data structures. 
+Each Windows process is represented by an executive process (`EPROCESS` structure). Besides containing many attributes relating to a process (such as `UniqueProcessId`), an `EPROCESS` contains and points to a number of other related data structures. For example, each process has one or more threads, each represented by an executive thread (`ETHREAD`) structure. 
