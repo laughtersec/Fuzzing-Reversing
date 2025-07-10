@@ -46,13 +46,14 @@ The structure of a VAD is a binary tree, with each node representing a block of 
 
 An example: A DLL is loaded into a process, a VAD node is created to record its memory region, access permissions, and the file it's mapped to.
 
+By examining a process in windbg, the `VadRoot` can be found.
+
 # Internals
 Each Windows process is represented by an executive process (`EPROCESS` structure). Besides containing many attributes relating to a process (such as `UniqueProcessId`), an `EPROCESS` contains and points to a number of other related data structures. For example, each process has one or more threads, each represented by an executive thread (`ETHREAD`) structure.
 
 The `EPROCESS` and most of its related data structures exist in system address space. ==One exception is the Process Environment Block (PEB)==, which exists in the process (user) address space (because it contains information accessed by user-mode code). Additionally, some of the process data structures used in memory management, such as the working set list, are valid only within the context of the current process, because they are stored in process-specific system space.
 
 ## Various Structures
-
 - For each process that is executing a Windows program, the Windows subsystem process (Csrss) maintains a parallel structure called the CSR_PROCESS.
 - Windows subsystem (Win32k.sys) maintains a per-process data structure, `W32PROCESS`, which is created the first time a thread calls a Windows USER or GDI function that is implemented in kernel mode. This happens as soon as the User32.dll library is loaded (by calling functions like `CreateWindowEx`).
 - The Graphics Device Interface (GDI) component infrastructure causes the DirectX Graphics Kernel (Dxgkrnl.sys) to initialize a structure of its own, `DXGPROCESS`.
