@@ -8,3 +8,5 @@ In ==`Ntoskrnl.exe`==. It is the largest component in the executive, hinting at 
 # Components
 - A set of executive system services for allocating, deallocating, and managing virtual memory, most of which are exposed through the Windows API or kernel-mode device driver interfaces.
 - A translation-not-valid and access fault trap handler for resolving hardware-detected memory-management exceptions and making virtual pages resident on behalf of a process.
+- Six key top-level routines, each running in one of six different kernel-mode threads in the System process:
+	- The balance set manager (KeBalanceSetManager, priority 17): This calls
