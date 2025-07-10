@@ -27,7 +27,7 @@ Note: This is an analogy.
 | Goons                                 | Muscle that does the dirty work. They are the gang in action.                                          |
 
 # Diagram
-![[processes.svg]]
+![[Excalidraw/processes.svg]]
 
 # Creating a Process
 ==The Windows API provides several functions for creating processes==. The simplest is `CreateProcess`, which attempts to create a process with the same access token as the creating process. If a different token is required, `CreateProcessAsUser` can be used, which accepts an extra argument (the first) - a handle to a token object that was already somehow obtained (for example, by calling the `LogonUser` function).
