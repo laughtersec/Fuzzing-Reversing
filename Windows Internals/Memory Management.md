@@ -18,3 +18,9 @@ In ==`Ntoskrnl.exe`==. It is the largest component in the executive, hinting at 
 
 # Paging
 Memory management is done in distinct chunks called pages. This is because the hardware memory management unit translates virtual to physical addresses at the granularity of a page. Hence, a page is the smallest unit of protection at the hardware level.
+
+| Architecture | Small Page Size | Large Page Size | Small Pages per Large Page |
+| ------------ | --------------- | --------------- | -------------------------- |
+| x86 (PAE)    | 4 KB            | 2 MB            | 512                        |
+| x64          | 4 KB            | 2 MB            | 512                        |
+| ARM          | 4 KB            | 4 MB            | 1024                       |
