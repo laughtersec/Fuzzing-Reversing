@@ -17,4 +17,4 @@ In ==`Ntoskrnl.exe`==. It is the largest component in the executive, hinting at 
 	- **The zero page thread (MiZeroPageThread, priority 0)**: This zeroes out pages on the free list so that a cache of zero pages is available to satisfy future demand-zero page faults. In some cases, memory zeroing is done by a faster function called `MiZeroInParallel`.
 
 # Paging
-Memory management is done in distinct chunks called pages. This is because the hardware memory management unit translates virtual to physical addresses at the granularity of a page. Hence, a page is the smallest unit of protection at the hardware level. 
+Memory management is done in distinct chunks called pages. This is because the hardware memory management unit translates virtual to physical addresses at the granularity of a page. Hence, a page is the smallest unit of protection at the hardware level.
