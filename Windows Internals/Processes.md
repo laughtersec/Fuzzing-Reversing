@@ -45,3 +45,6 @@ It represents a layer of abstraction between the physical memory (RAM) installed
 The structure of a VAD is a binary tree, with each node representing a block of virtual memory. These nodes contain crucial information about the memory block, including its starting address, size and state.
 
 An example: A DLL is loaded into a process, a VAD node is created to record its memory region, access permissions, and the file it's mapped to.
+
+# Internals
+Each Windows process is represented by an executive process (`EPROCESS` structure). Besides containing many attributes relating to a process 
