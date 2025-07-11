@@ -67,3 +67,4 @@ Except for the idle process, every `EPROCESS` structure is encapsulated as a pro
 
 ### Process Environment Block
 - It exists in the process (user) address space (because it contains information accessed by user-mode code).
+- Some of the process data structures used in memory management, such as the working set list, are valid only within the context of the current process, because they are stored in process-specific system space.
