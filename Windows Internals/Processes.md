@@ -64,4 +64,5 @@ Except for the idle process, every `EPROCESS` structure is encapsulated as a pro
 ### PROCESS CONTROL BLOCK
 - It is a structure of type `KPROCESS`, for kernel process. 
 - Although routines in the executive store information in the `EPROCESS`, the dispatcher, scheduler, and interrupt/time accounting code - being part of the operating system kernel - use the `KPROCESS` instead.
+- 
 
