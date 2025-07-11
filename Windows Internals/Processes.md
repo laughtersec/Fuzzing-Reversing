@@ -66,4 +66,4 @@ Except for the idle process, every `EPROCESS` structure is encapsulated as a pro
 - Although routines in the executive store information in the `EPROCESS`, the dispatcher, scheduler, and interrupt/time accounting code - being part of the operating system kernel - use the `KPROCESS` instead.
 
 ### Process Environment Block
-- 
+- It exists in the process (user) address space (because it contains information accessed by user-mode code).
