@@ -51,8 +51,11 @@ By examining a process in windbg, the `VadRoot` can be found.
 [The Windows Concept Journey — VAD Tree (Virtual Address Descriptor Tree) | by Shlomi Boutnaru, Ph.D. | Medium](https://medium.com/@boutnaru/the-windows-concept-journey-vad-tree-virtual-address-descriptor-tree-5cd9a1cc3f53)
 
 # Handle Table
-- Applications running in user mode can't directly access Windows objects
-- 
+[Handles and objects - Win32 apps | Microsoft Learn](https://learn.microsoft.com/en-us/windows/win32/sysinfo/handles-and-objects)
+- Applications running in user mode can't directly access Windows objects or object data held by the "Object Manager" (Sysinternals).
+- A process would require a handle to the specific object.
+- For each handle, there is an entry in a handle table which resides in kernel space.
+- A handle table exists for each process.
 
 # Internals
 Each Windows process is represented by an executive process (`EPROCESS` structure). Besides containing many attributes relating to a process (such as `UniqueProcessId`), an `EPROCESS` contains and points to a number of other related data structures. For example, each process has one or more threads, each represented by an executive thread (`ETHREAD`) structure.
