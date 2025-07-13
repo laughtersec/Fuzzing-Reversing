@@ -2,7 +2,6 @@
 tags:
   - windbg
 ---
-
 # Documentation
 WinDbg, despite its awful GUI, has this very amazing thing called the "Help" button, which historically has been present in any windows GUI based softwares.
 
