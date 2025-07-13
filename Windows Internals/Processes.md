@@ -61,6 +61,273 @@ The `EPROCESS` and most of its related data structures exist in system address s
 - The Graphics Device Interface (GDI) component infrastructure causes the DirectX Graphics Kernel (Dxgkrnl.sys) to initialize a structure of its own, `DXGPROCESS`.
 Except for the idle process, every `EPROCESS` structure is encapsulated as a process object by the ==executive object manager==.
 
+```d title:"Display type (dt) in nt!_eprocess of notepad.exe"
+0:000> dt nt!_eprocess
+ntdll!_EPROCESS
+   +0x000 Pcb              : _KPROCESS
+   +0x1c8 ProcessLock      : _EX_PUSH_LOCK
+   +0x1d0 UniqueProcessId  : Ptr64 Void
+   +0x1d8 ActiveProcessLinks : _LIST_ENTRY
+   +0x1e8 RundownProtect   : _EX_RUNDOWN_REF
+   +0x1f0 Flags2           : Uint4B
+   +0x1f0 JobNotReallyActive : Pos 0, 1 Bit
+   +0x1f0 AccountingFolded : Pos 1, 1 Bit
+   +0x1f0 NewProcessReported : Pos 2, 1 Bit
+   +0x1f0 ExitProcessReported : Pos 3, 1 Bit
+   +0x1f0 ReportCommitChanges : Pos 4, 1 Bit
+   +0x1f0 LastReportMemory : Pos 5, 1 Bit
+   +0x1f0 ForceWakeCharge  : Pos 6, 1 Bit
+   +0x1f0 CrossSessionCreate : Pos 7, 1 Bit
+   +0x1f0 NeedsHandleRundown : Pos 8, 1 Bit
+   +0x1f0 RefTraceEnabled  : Pos 9, 1 Bit
+   +0x1f0 PicoCreated      : Pos 10, 1 Bit
+   +0x1f0 EmptyJobEvaluated : Pos 11, 1 Bit
+   +0x1f0 DefaultPagePriority : Pos 12, 3 Bits
+   +0x1f0 PrimaryTokenFrozen : Pos 15, 1 Bit
+   +0x1f0 ProcessVerifierTarget : Pos 16, 1 Bit
+   +0x1f0 RestrictSetThreadContext : Pos 17, 1 Bit
+   +0x1f0 AffinityPermanent : Pos 18, 1 Bit
+   +0x1f0 AffinityUpdateEnable : Pos 19, 1 Bit
+   +0x1f0 PropagateNode    : Pos 20, 1 Bit
+   +0x1f0 ExplicitAffinity : Pos 21, 1 Bit
+   +0x1f0 Flags2Available1 : Pos 22, 2 Bits
+   +0x1f0 EnableReadVmLogging : Pos 24, 1 Bit
+   +0x1f0 EnableWriteVmLogging : Pos 25, 1 Bit
+   +0x1f0 FatalAccessTerminationRequested : Pos 26, 1 Bit
+   +0x1f0 DisableSystemAllowedCpuSet : Pos 27, 1 Bit
+   +0x1f0 Flags2Available2 : Pos 28, 3 Bits
+   +0x1f0 InPrivate        : Pos 31, 1 Bit
+   +0x1f4 Flags            : Uint4B
+   +0x1f4 CreateReported   : Pos 0, 1 Bit
+   +0x1f4 NoDebugInherit   : Pos 1, 1 Bit
+   +0x1f4 ProcessExiting   : Pos 2, 1 Bit
+   +0x1f4 ProcessDelete    : Pos 3, 1 Bit
+   +0x1f4 ManageExecutableMemoryWrites : Pos 4, 1 Bit
+   +0x1f4 VmDeleted        : Pos 5, 1 Bit
+   +0x1f4 OutswapEnabled   : Pos 6, 1 Bit
+   +0x1f4 Outswapped       : Pos 7, 1 Bit
+   +0x1f4 FailFastOnCommitFail : Pos 8, 1 Bit
+   +0x1f4 Wow64VaSpace4Gb  : Pos 9, 1 Bit
+   +0x1f4 AddressSpaceInitialized : Pos 10, 2 Bits
+   +0x1f4 SetTimerResolution : Pos 12, 1 Bit
+   +0x1f4 BreakOnTermination : Pos 13, 1 Bit
+   +0x1f4 DeprioritizeViews : Pos 14, 1 Bit
+   +0x1f4 WriteWatch       : Pos 15, 1 Bit
+   +0x1f4 ProcessInSession : Pos 16, 1 Bit
+   +0x1f4 OverrideAddressSpace : Pos 17, 1 Bit
+   +0x1f4 HasAddressSpace  : Pos 18, 1 Bit
+   +0x1f4 LaunchPrefetched : Pos 19, 1 Bit
+   +0x1f4 Reserved         : Pos 20, 1 Bit
+   +0x1f4 VmTopDown        : Pos 21, 1 Bit
+   +0x1f4 ImageNotifyDone  : Pos 22, 1 Bit
+   +0x1f4 PdeUpdateNeeded  : Pos 23, 1 Bit
+   +0x1f4 VdmAllowed       : Pos 24, 1 Bit
+   +0x1f4 ProcessRundown   : Pos 25, 1 Bit
+   +0x1f4 ProcessInserted  : Pos 26, 1 Bit
+   +0x1f4 DefaultIoPriority : Pos 27, 3 Bits
+   +0x1f4 ProcessSelfDelete : Pos 30, 1 Bit
+   +0x1f4 SetTimerResolutionLink : Pos 31, 1 Bit
+   +0x1f8 CreateTime       : _LARGE_INTEGER
+   +0x200 ProcessQuotaUsage : [2] Uint8B
+   +0x210 ProcessQuotaPeak : [2] Uint8B
+   +0x220 PeakVirtualSize  : Uint8B
+   +0x228 VirtualSize      : Uint8B
+   +0x230 SessionProcessLinks : _LIST_ENTRY
+   +0x240 ExceptionPortData : Ptr64 Void
+   +0x240 ExceptionPortValue : Uint8B
+   +0x240 ExceptionPortState : Pos 0, 3 Bits
+   +0x248 Token            : _EX_FAST_REF
+   +0x250 MmReserved       : Uint8B
+   +0x258 AddressCreationLock : _EX_PUSH_LOCK
+   +0x260 PageTableCommitmentLock : _EX_PUSH_LOCK
+   +0x268 RotateInProgress : Ptr64 _ETHREAD
+   +0x270 ForkInProgress   : Ptr64 _ETHREAD
+   +0x278 CommitChargeJob  : Ptr64 _EJOB
+   +0x280 CloneRoot        : _RTL_AVL_TREE
+   +0x288 NumberOfPrivatePages : Uint8B
+   +0x290 NumberOfLockedPages : Uint8B
+   +0x298 Win32Process     : Ptr64 Void
+   +0x2a0 Job              : Ptr64 _EJOB
+   +0x2a8 SectionObject    : Ptr64 Void
+   +0x2b0 SectionBaseAddress : Ptr64 Void
+   +0x2b8 Cookie           : Uint4B
+   +0x2c0 WorkingSetWatch  : Ptr64 _PAGEFAULT_HISTORY
+   +0x2c8 Win32WindowStation : Ptr64 Void
+   +0x2d0 InheritedFromUniqueProcessId : Ptr64 Void
+   +0x2d8 OwnerProcessId   : Uint8B
+   +0x2e0 Peb              : Ptr64 _PEB
+   +0x2e8 Session          : Ptr64 _PSP_SESSION_SPACE
+   +0x2f0 Spare1           : Ptr64 Void
+   +0x2f8 QuotaBlock       : Ptr64 _EPROCESS_QUOTA_BLOCK
+   +0x300 ObjectTable      : Ptr64 _HANDLE_TABLE
+   +0x308 DebugPort        : Ptr64 Void
+   +0x310 WoW64Process     : Ptr64 _EWOW64PROCESS
+   +0x318 DeviceMap        : _EX_FAST_REF
+   +0x320 EtwDataSource    : Ptr64 Void
+   +0x328 PageDirectoryPte : Uint8B
+   +0x330 ImageFilePointer : Ptr64 _FILE_OBJECT
+   +0x338 ImageFileName    : [15] UChar
+   +0x347 PriorityClass    : UChar
+   +0x348 SecurityPort     : Ptr64 Void
+   +0x350 SeAuditProcessCreationInfo : _SE_AUDIT_PROCESS_CREATION_INFO
+   +0x358 JobLinks         : _LIST_ENTRY
+   +0x368 HighestUserAddress : Ptr64 Void
+   +0x370 ThreadListHead   : _LIST_ENTRY
+   +0x380 ActiveThreads    : Uint4B
+   +0x384 ImagePathHash    : Uint4B
+   +0x388 DefaultHardErrorProcessing : Uint4B
+   +0x38c LastThreadExitStatus : Int4B
+   +0x390 PrefetchTrace    : _EX_FAST_REF
+   +0x398 LockedPagesList  : Ptr64 Void
+   +0x3a0 ReadOperationCount : _LARGE_INTEGER
+   +0x3a8 WriteOperationCount : _LARGE_INTEGER
+   +0x3b0 OtherOperationCount : _LARGE_INTEGER
+   +0x3b8 ReadTransferCount : _LARGE_INTEGER
+   +0x3c0 WriteTransferCount : _LARGE_INTEGER
+   +0x3c8 OtherTransferCount : _LARGE_INTEGER
+   +0x3d0 CommitChargeLimit : Uint8B
+   +0x3d8 CommitCharge     : Uint8B
+   +0x3e0 CommitChargePeak : Uint8B
+   +0x400 Vm               : _MMSUPPORT_FULL
+   +0x540 MmProcessLinks   : _LIST_ENTRY
+   +0x550 ModifiedPageCount : Uint4B
+   +0x554 ExitStatus       : Int4B
+   +0x558 VadRoot          : _RTL_AVL_TREE
+   +0x560 VadHint          : Ptr64 Void
+   +0x568 VadCount         : Uint8B
+   +0x570 VadPhysicalPages : Uint8B
+   +0x578 VadPhysicalPagesLimit : Uint8B
+   +0x580 AlpcContext      : _ALPC_PROCESS_CONTEXT
+   +0x5a0 TimerResolutionLink : _LIST_ENTRY
+   +0x5b0 TimerResolutionStackRecord : Ptr64 _PO_DIAG_STACK_RECORD
+   +0x5b8 RequestedTimerResolution : Uint4B
+   +0x5bc SmallestTimerResolution : Uint4B
+   +0x5c0 ExitTime         : _LARGE_INTEGER
+   +0x5c8 InvertedFunctionTable : Ptr64 _INVERTED_FUNCTION_TABLE_USER_MODE
+   +0x5d0 InvertedFunctionTableLock : _EX_PUSH_LOCK
+   +0x5d8 ActiveThreadsHighWatermark : Uint4B
+   +0x5dc LargePrivateVadCount : Uint4B
+   +0x5e0 ThreadListLock   : _EX_PUSH_LOCK
+   +0x5e8 WnfContext       : Ptr64 Void
+   +0x5f0 ServerSilo       : Ptr64 _EJOB
+   +0x5f8 SignatureLevel   : UChar
+   +0x5f9 SectionSignatureLevel : UChar
+   +0x5fa Protection       : _PS_PROTECTION
+   +0x5fb HangCount        : Pos 0, 3 Bits
+   +0x5fb GhostCount       : Pos 3, 3 Bits
+   +0x5fb PrefilterException : Pos 6, 1 Bit
+   +0x5fc Flags3           : Uint4B
+   +0x5fc Minimal          : Pos 0, 1 Bit
+   +0x5fc ReplacingPageRoot : Pos 1, 1 Bit
+   +0x5fc Crashed          : Pos 2, 1 Bit
+   +0x5fc JobVadsAreTracked : Pos 3, 1 Bit
+   +0x5fc VadTrackingDisabled : Pos 4, 1 Bit
+   +0x5fc AuxiliaryProcess : Pos 5, 1 Bit
+   +0x5fc SubsystemProcess : Pos 6, 1 Bit
+   +0x5fc IndirectCpuSets  : Pos 7, 1 Bit
+   +0x5fc RelinquishedCommit : Pos 8, 1 Bit
+   +0x5fc HighGraphicsPriority : Pos 9, 1 Bit
+   +0x5fc CommitFailLogged : Pos 10, 1 Bit
+   +0x5fc ReserveFailLogged : Pos 11, 1 Bit
+   +0x5fc SystemProcess    : Pos 12, 1 Bit
+   +0x5fc AllImagesAtBasePristineBase : Pos 13, 1 Bit
+   +0x5fc AddressPolicyFrozen : Pos 14, 1 Bit
+   +0x5fc ProcessFirstResume : Pos 15, 1 Bit
+   +0x5fc ForegroundExternal : Pos 16, 1 Bit
+   +0x5fc ForegroundSystem : Pos 17, 1 Bit
+   +0x5fc HighMemoryPriority : Pos 18, 1 Bit
+   +0x5fc EnableProcessSuspendResumeLogging : Pos 19, 1 Bit
+   +0x5fc EnableThreadSuspendResumeLogging : Pos 20, 1 Bit
+   +0x5fc SecurityDomainChanged : Pos 21, 1 Bit
+   +0x5fc SecurityFreezeComplete : Pos 22, 1 Bit
+   +0x5fc VmProcessorHost  : Pos 23, 1 Bit
+   +0x5fc VmProcessorHostTransition : Pos 24, 1 Bit
+   +0x5fc AltSyscall       : Pos 25, 1 Bit
+   +0x5fc TimerResolutionIgnore : Pos 26, 1 Bit
+   +0x5fc DisallowUserTerminate : Pos 27, 1 Bit
+   +0x5fc EnableProcessRemoteExecProtectVmLogging : Pos 28, 1 Bit
+   +0x5fc EnableProcessLocalExecProtectVmLogging : Pos 29, 1 Bit
+   +0x5fc MemoryCompressionProcess : Pos 30, 1 Bit
+   +0x5fc EnableProcessImpersonationLogging : Pos 31, 1 Bit
+   +0x600 DeviceAsid       : Int4B
+   +0x608 SvmData          : Ptr64 Void
+   +0x610 SvmProcessLock   : _EX_PUSH_LOCK
+   +0x618 SvmLock          : Uint8B
+   +0x620 SvmProcessDeviceListHead : _LIST_ENTRY
+   +0x630 LastFreezeInterruptTime : Uint8B
+   +0x638 DiskCounters     : Ptr64 _PROCESS_DISK_COUNTERS
+   +0x640 PicoContext      : Ptr64 Void
+   +0x648 EnclaveTable     : Ptr64 Void
+   +0x650 EnclaveNumber    : Uint8B
+   +0x658 EnclaveLock      : _EX_PUSH_LOCK
+   +0x660 HighPriorityFaultsAllowed : Uint4B
+   +0x668 EnergyContext    : Ptr64 _PO_PROCESS_ENERGY_CONTEXT
+   +0x670 VmContext        : Ptr64 Void
+   +0x678 SequenceNumber   : Uint8B
+   +0x680 CreateInterruptTime : Uint8B
+   +0x688 CreateUnbiasedInterruptTime : Uint8B
+   +0x690 TotalUnbiasedFrozenTime : Uint8B
+   +0x698 LastAppStateUpdateTime : Uint8B
+   +0x6a0 LastAppStateUptime : Pos 0, 61 Bits
+   +0x6a0 LastAppState     : Pos 61, 3 Bits
+   +0x6a8 SharedCommitCharge : Uint8B
+   +0x6b0 SharedCommitLock : _EX_PUSH_LOCK
+   +0x6b8 SharedCommitLinks : _LIST_ENTRY
+   +0x6c8 AllowedCpuSets   : Uint8B
+   +0x6d0 DefaultCpuSets   : Uint8B
+   +0x6c8 AllowedCpuSetsIndirect : Ptr64 Uint8B
+   +0x6d0 DefaultCpuSetsIndirect : Ptr64 Uint8B
+   +0x6d8 DiskIoAttribution : Ptr64 Void
+   +0x6e0 DxgProcess       : Ptr64 Void
+   +0x6e8 Win32KFilterSet  : Uint4B
+   +0x6ec Machine          : Uint2B
+   +0x6ee MmSlabIdentity   : UChar
+   +0x6ef Spare0           : UChar
+   +0x6f0 ProcessTimerDelay : _PS_INTERLOCKED_TIMER_DELAY_VALUES
+   +0x6f8 KTimerSets       : Uint4B
+   +0x6fc KTimer2Sets      : Uint4B
+   +0x700 ThreadTimerSets  : Uint4B
+   +0x708 VirtualTimerListLock : Uint8B
+   +0x710 VirtualTimerListHead : _LIST_ENTRY
+   +0x720 WakeChannel      : _WNF_STATE_NAME
+   +0x720 WakeInfo         : _PS_PROCESS_WAKE_INFORMATION
+   +0x750 MitigationFlags  : Uint4B
+   +0x750 MitigationFlagsValues : <unnamed-tag>
+   +0x754 MitigationFlags2 : Uint4B
+   +0x754 MitigationFlags2Values : <unnamed-tag>
+   +0x758 PartitionObject  : Ptr64 Void
+   +0x760 SecurityDomain   : Uint8B
+   +0x768 ParentSecurityDomain : Uint8B
+   +0x770 CoverageSamplerContext : Ptr64 Void
+   +0x778 MmHotPatchContext : Ptr64 Void
+   +0x780 DynamicEHContinuationTargetsTree : _RTL_AVL_TREE
+   +0x788 DynamicEHContinuationTargetsLock : _EX_PUSH_LOCK
+   +0x790 DynamicEnforcedCetCompatibleRanges : _PS_DYNAMIC_ENFORCED_ADDRESS_RANGES
+   +0x7a0 DisabledComponentFlags : Uint4B
+   +0x7a4 PageCombineSequence : Int4B
+   +0x7a8 EnableOptionalXStateFeaturesLock : _EX_PUSH_LOCK
+   +0x7b0 PathRedirectionHashes : Ptr64 Uint4B
+   +0x7b8 SyscallProviderReserved : [4] Ptr64 Void
+   +0x7d8 MitigationFlags3 : Uint4B
+   +0x7d8 MitigationFlags3Values : <unnamed-tag>
+   +0x7dc Flags4           : Uint4B
+   +0x7dc ThreadWasActive  : Pos 0, 1 Bit
+   +0x7dc MinimalTerminate : Pos 1, 1 Bit
+   +0x7dc ImageExpansionDisable : Pos 2, 1 Bit
+   +0x7dc SessionFirstProcess : Pos 3, 1 Bit
+   +0x7e0 SyscallUsage     : Uint4B
+   +0x7e0 SyscallUsageValues : <unnamed-tag>
+   +0x7e4 SupervisorDeviceAsid : Int4B
+   +0x7e8 SupervisorSvmData : Ptr64 Void
+   +0x7f0 NetworkCounters  : Ptr64 _PROCESS_NETWORK_COUNTERS
+   +0x7f8 Execution        : _PROCESS_EXECUTION
+   +0x800 ThreadIndexTable : Ptr64 Void
+   +0x808 FreezeWorkLinks  : _LIST_ENTRY
+```
+
+```d
+```
+
 ### PROCESS CONTROL BLOCK
 - It is a structure of type `KPROCESS`, for kernel process. 
 - Although routines in the executive store information in the `EPROCESS`, the dispatcher, scheduler, and interrupt/time accounting code - being part of the operating system kernel - use the `KPROCESS` instead.
