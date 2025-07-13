@@ -61,14 +61,24 @@ Thus, an object in Windows is accessed by the user using a per process "handle t
 
 ## Example
 
-```cpp
+```cpp title:"example object use-case"
 #include<Windows.h>
 #include<stdio.h>
 
 void main()
 {
 	HANDLE createFileHandle;
-	LPCWSTR fileName = L"C:\\Users\\laughtersec\\Desktop\\laughtersec.txt"
+	LPCWSTR fileName = L"C:\\Users\\laughtersec\\Desktop\\laughtersec.txt";
+	createFileHandle = CreateFile(
+		fileName,
+		GENERIC_WRITE,
+		0,
+		NULL,
+		CREATE_ALWAYS,
+		FILE_ATTRIBUTE_NORMAL,
+		NULL
+	);
+	printf("%p", createFileHandle);
 }
 ```
 
