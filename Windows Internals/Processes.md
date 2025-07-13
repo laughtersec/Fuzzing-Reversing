@@ -50,6 +50,9 @@ By examining a process in windbg, the `VadRoot` can be found.
 
 [The Windows Concept Journey — VAD Tree (Virtual Address Descriptor Tree) | by Shlomi Boutnaru, Ph.D. | Medium](https://medium.com/@boutnaru/the-windows-concept-journey-vad-tree-virtual-address-descriptor-tree-5cd9a1cc3f53)
 
+# Handle Table
+
+
 # Internals
 Each Windows process is represented by an executive process (`EPROCESS` structure). Besides containing many attributes relating to a process (such as `UniqueProcessId`), an `EPROCESS` contains and points to a number of other related data structures. For example, each process has one or more threads, each represented by an executive thread (`ETHREAD`) structure.
 
