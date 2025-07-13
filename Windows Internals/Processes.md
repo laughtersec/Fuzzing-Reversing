@@ -325,7 +325,74 @@ ntdll!_EPROCESS
    +0x808 FreezeWorkLinks  : _LIST_ENTRY
 ```
 
-```d
+```d title:"Display type (dt) in PCB of notepad.exe"
+0:000> dt nt!_kprocess
+ntdll!_KPROCESS
+   +0x000 Header           : _DISPATCHER_HEADER
+   +0x018 ProfileListHead  : _LIST_ENTRY
+   +0x028 DirectoryTableBase : Uint8B
+   +0x030 ThreadListHead   : _LIST_ENTRY
+   +0x040 ProcessLock      : Uint4B
+   +0x044 ProcessTimerDelay : Uint4B
+   +0x048 DeepFreezeStartTime : Uint8B
+   +0x050 Affinity         : Ptr64 _KAFFINITY_EX
+   +0x058 AutoBoostState   : _KAB_UM_PROCESS_CONTEXT
+   +0x068 ReadyListHead    : _LIST_ENTRY
+   +0x078 SwapListEntry    : _SINGLE_LIST_ENTRY
+   +0x080 ActiveProcessors : Ptr64 _KAFFINITY_EX
+   +0x088 AutoAlignment    : Pos 0, 1 Bit
+   +0x088 DisableBoost     : Pos 1, 1 Bit
+   +0x088 DisableQuantum   : Pos 2, 1 Bit
+   +0x088 DeepFreeze       : Pos 3, 1 Bit
+   +0x088 TimerVirtualization : Pos 4, 1 Bit
+   +0x088 CheckStackExtents : Pos 5, 1 Bit
+   +0x088 CacheIsolationEnabled : Pos 6, 1 Bit
+   +0x088 PpmPolicy        : Pos 7, 4 Bits
+   +0x088 VaSpaceDeleted   : Pos 11, 1 Bit
+   +0x088 MultiGroup       : Pos 12, 1 Bit
+   +0x088 ForegroundProcess : Pos 13, 1 Bit
+   +0x088 ReservedFlags    : Pos 14, 18 Bits
+   +0x088 ProcessFlags     : Int4B
+   +0x08c Spare0c          : Uint4B
+   +0x090 BasePriority     : Char
+   +0x091 QuantumReset     : Char
+   +0x092 Visited          : Char
+   +0x093 Flags            : _KEXECUTE_OPTIONS
+   +0x098 ActiveGroupsMask : _KGROUP_MASK
+   +0x0a8 ActiveGroupPadding : [2] Uint8B
+   +0x0b8 IdealProcessorAssignmentBlock : Ptr64 _KI_IDEAL_PROCESSOR_ASSIGNMENT_BLOCK
+   +0x0c0 Padding          : [6] Uint8B
+   +0x0f0 Padding2         : Uint4B
+   +0x0f4 SchedulerAssistYieldBoostCount : Uint4B
+   +0x0f8 SchedulerAssistYieldBoostAllowedTime : Int8B
+   +0x100 Spare0d          : Uint4B
+   +0x104 IdealGlobalNode  : Uint2B
+   +0x106 Spare1           : Uint2B
+   +0x108 StackCount       : _KSTACK_COUNT
+   +0x110 ProcessListEntry : _LIST_ENTRY
+   +0x120 CycleTime        : Uint8B
+   +0x128 ContextSwitches  : Uint8B
+   +0x130 SchedulingGroup  : Ptr64 _KSCHEDULING_GROUP
+   +0x138 KernelTime       : Uint8B
+   +0x140 UserTime         : Uint8B
+   +0x148 ReadyTime        : Uint8B
+   +0x150 FreezeCount      : Uint4B
+   +0x154 Spare4           : Uint4B
+   +0x158 UserDirectoryTableBase : Uint8B
+   +0x160 AddressPolicy    : UChar
+   +0x161 Spare2           : [7] UChar
+   +0x168 InstrumentationCallback : Ptr64 Void
+   +0x170 SecureState      : <unnamed-tag>
+   +0x178 KernelWaitTime   : Uint8B
+   +0x180 UserWaitTime     : Uint8B
+   +0x188 LastRebalanceQpc : Uint8B
+   +0x190 PerProcessorCycleTimes : Ptr64 Void
+   +0x198 ExtendedFeatureDisableMask : Uint8B
+   +0x1a0 PrimaryGroup     : Uint2B
+   +0x1a2 Spare3           : [3] Uint2B
+   +0x1a8 UserCetLogging   : Ptr64 Void
+   +0x1b0 CpuPartitionList : _LIST_ENTRY
+   +0x1c0 AvailableCpuState : Ptr64 _KPROCESS_AVAILABLE_CPU_STATE
 ```
 
 ### PROCESS CONTROL BLOCK
