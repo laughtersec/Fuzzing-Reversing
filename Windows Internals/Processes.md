@@ -61,28 +61,41 @@ Thus, an object in Windows is accessed by the user using a per process "handle t
 
 ## Example
 
-```cpp title:"example object use-case"
-#include<Windows.h>
-#include<stdio.h>
+```c title:"example object use-case"
+#include <windows.h>
+#include <stdio.h>
 
-void main()
-{
-	HANDLE createFileHandle;
-	LPCWSTR fileName = L"C:\\Users\\laughtersec\\Desktop\\laughtersec.txt";
-	createFileHandle = CreateFile(
-		fileName,
-		GENERIC_WRITE,
-		0,
-		NULL,
-		CREATE_ALWAYS,
-		FILE_ATTRIBUTE_NORMAL,
-		NULL
-	);
-	printf("%p", createFileHandle);
+int main() {
+    // Get TEMP path
+    char tempPath[MAX_PATH];
+    GetTempPathA(MAX_PATH, tempPath);
+    // Compose file path
+    char filePath[MAX_PATH];
+    snprintf(filePath, MAX_PATH, "%s\\testfile.tmp", tempPath);
+    // Create file
+    HANDLE hFile = CreateFileA(
+        filePath,
+        GENERIC_WRITE,
+        0,
+        NULL,
+        CREATE_ALWAYS,
+        FILE_ATTRIBUTE_NORMAL,
+        NULL
+    );
+    if (hFile == INVALID_HANDLE_VALUE) {
+        printf("Failed to create file\n");
+        return 1;
+    }
+    printf("Created: %s\n", filePath);
+    
+    while (true) {
+        Sleep(INFINITE);
+    }
+    return 0;
 }
 ```
 
-
+Handles can be examined better using Process Monitor or Process Explorer.
 
 # Internals
 Each Windows process is represented by an executive process (`EPROCESS` structure). Besides containing many attributes relating to a process (such as `UniqueProcessId`), an `EPROCESS` contains and points to a number of other related data structures. For example, each process has one or more threads, each represented by an executive thread (`ETHREAD`) structure.

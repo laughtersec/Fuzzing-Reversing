@@ -10,3 +10,9 @@ WinDbg, despite its awful GUI, has this very amazing thing called the "Help" but
 ![[memory_contents_windbg.png]]
 
 I will never understand why so many of you never bother exploring.
+
+## Setting a breakpoint on the main function
+
+```d
+bp $exentry
+```
