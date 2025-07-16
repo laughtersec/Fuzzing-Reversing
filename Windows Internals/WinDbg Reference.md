@@ -51,7 +51,7 @@ PROCESS ffff9b07df2da0c0
     BasePriority                      8
     CommitCharge                      142
     Job                               ffff9b07dcb8a060
-
+        
         THREAD ffff9b07df0f5080  Cid 3d00.65e0  Teb: 000000000021f000 Win32Thread: 0000000000000000 WAIT: (DelayExecution) UserMode Non-Alertable
             ffffffffffffffff  NotificationEvent
         Not impersonating
