@@ -76,7 +76,14 @@ PROCESS ffff9b07df2da0c0
         00000000`0014fbd8 00000000`00000000     0x00007ffb`71042454
 ```
 
-### Retrieve handles of a proc
+### Retrieve handles used by a process
+
+```d title:"It is a very long list"
+!handle 0 0x20 3d00
+<...>
+```
+
+Perhaps I need to write a script to strategically dump information about interesting handles.
 ## Miscellaneous
 
 ```d
