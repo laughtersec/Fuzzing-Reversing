@@ -11,7 +11,7 @@ WinDbg, despite its awful GUI, has this very amazing thing called the "Help" but
 
 I will never understand why so many of you never bother exploring.
 
-## Enable Kernel Debugging
+## Kernel Debugging
 
 ```powershell title:"restart the system after running this command"
 bcdedit -debug on
@@ -21,8 +21,11 @@ Kernel debugging should now work properly
 
 ![[kdebug_howto.png]]
 
+![[kdebug_local.png]]
 
-The desired process will have to be searched in the task manager and the hexadecimal of the PID needs to be noted down to examine it in kernel debugging ( using base 10 PIDs seems to fail).
+### Examining a Process using Kernel Debug
+
+The desired process will have to be searched in the task manager and the ==hexadecimal of the PID== needs to be noted down to examine it in kernel debugging ( using base 10 PID values seems to fail).
 
 ```d
 lkd> !process 3d00
