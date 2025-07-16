@@ -86,7 +86,7 @@ PROCESS ffff9b07df2da0c0
 Perhaps I need to write a script to strategically dump information about interesting handles.
 ## Miscellaneous
 
-```d
+```d title:"add a breakpoint to main"
 bp $exentry
 ```
 
