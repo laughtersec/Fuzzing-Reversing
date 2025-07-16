@@ -16,6 +16,8 @@ The volatile registers, stacks, and private storage area are called the thread's
 
 ![[thread.png]]
 
+# Internals
+
 
 
 
