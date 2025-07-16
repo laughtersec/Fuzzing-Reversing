@@ -76,6 +76,7 @@ PROCESS ffff9b07df2da0c0
         00000000`0014fbd8 00000000`00000000     0x00007ffb`71042454
 ```
 
+### Retrieve handles of a proc
 ## Miscellaneous
 
 ```d
