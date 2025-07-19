@@ -22,5 +22,10 @@ The volatile registers, stacks, and private storage area are called the thread's
 
 ### Thread Environment Block
 - Small memory range
-- Provides stor
+- Provides storage for thread-specific information
+	- Thread ID
+	- Stack range
+	- GetLastError
+	- TLS: Thread local storage
+- gs:[X] = [IA32_KERNEL_GS_BASE + X]
 
