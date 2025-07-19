@@ -18,3 +18,9 @@ The volatile registers, stacks, and private storage area are called the thread's
 
 # Internals
 
+## Various STructures
+
+### Thread Environment Block
+- Small memory range
+- Provides stor
+

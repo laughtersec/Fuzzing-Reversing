@@ -460,3 +460,10 @@ ntdll!_KPROCESS
 ### Process Environment Block
 - It exists in the process (user) address space (because it contains information accessed by user-mode code).
 - Some of the process data structures used in memory management, such as the working set list, are valid only within the context of the current process, because they are stored in process-specific system space.
+- It has a rather small memory range
+- Provides storage for process-specific information
+	- Environment variables
+	- Working directory
+	- Module list
+	- Heap pointer
+	- etc.
