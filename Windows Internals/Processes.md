@@ -35,7 +35,7 @@ Note: This is an analogy.
 At memory level:
 - Initializes address space
 	- Map `KUSER_SHARED_DATA`
-	- Map the executable
+	- Map the executable (PE File)
 	- Map `ntdll.dll`
 
 # Access Tokens
