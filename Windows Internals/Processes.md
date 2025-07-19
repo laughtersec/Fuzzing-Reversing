@@ -42,6 +42,10 @@ At memory level:
 	- Allocate stack
 	- Allocate TEB
 	- `ntdll.LdrInitializeThunk`
+		- Load imported DLLs
+		- Loader lock
+		- TLS callbacks/DllMain
+		- `ZwContinue` -> `RtlUserThreadStart` (ZwContinue continues execution of the current thread with a different context)
 
 # Access Tokens
 https://learn.microsoft.com/en-us/windows/win32/secauthz/access-tokens
