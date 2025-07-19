@@ -16,6 +16,8 @@ The volatile registers, stacks, and private storage area are called the thread's
 
 ![[thread.png]]
 
+Here's an interesting fact about threads - There's a good chance that the execution of the thread and the loading of libraries might overlap, causing runtime errors where the thread fails to
+
 # Internals
 
 ## Various STructures
