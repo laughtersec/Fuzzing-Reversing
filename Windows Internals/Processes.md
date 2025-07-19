@@ -37,6 +37,11 @@ At memory level:
 	- Map `KUSER_SHARED_DATA`
 	- Map the executable (PE File)
 	- Map `ntdll.dll`
+	- Allocate PEB
+- Create initial thread
+	- Allocate stack
+	- Allocate TEB
+	- `ntdll.LdrInitializeThunk`
 
 # Access Tokens
 https://learn.microsoft.com/en-us/windows/win32/secauthz/access-tokens
