@@ -32,6 +32,21 @@ Note: This is an analogy.
 # Creating a Process
 ==The Windows API provides several functions for creating processes==. The simplest is `CreateProcess`, which attempts to create a process with the same access token as the creating process. If a different token is required, `CreateProcessAsUser` can be used, which accepts an extra argument (the first) - a handle to a token object that was already somehow obtained (for example, by calling the `LogonUser` function).
 
+At memory level:
+- Initializes address space
+	- Map `KUSER_SHARED_DATA`
+	- Map the executable (PE File)
+	- Map `ntdll.dll`
+	- Allocate PEB
+- Create initial thread
+	- Allocate stack
+	- Allocate TEB
+	- `ntdll.LdrInitializeThunk`
+		- Load imported DLLs
+		- Loader lock
+		- TLS callbacks/DllMain
+		- `ZwContinue` -> `RtlUserThreadStart` (ZwContinue continues execution of the current thread with a different context)
+
 # Access Tokens
 https://learn.microsoft.com/en-us/windows/win32/secauthz/access-tokens
 
@@ -449,3 +464,10 @@ ntdll!_KPROCESS
 ### Process Environment Block
 - It exists in the process (user) address space (because it contains information accessed by user-mode code).
 - Some of the process data structures used in memory management, such as the working set list, are valid only within the context of the current process, because they are stored in process-specific system space.
+- It has a rather small memory range
+- Provides storage for process-specific information
+	- Environment variables
+	- Working directory
+	- Module list
+	- Heap pointer
+	- etc.

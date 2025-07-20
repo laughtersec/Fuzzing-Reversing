@@ -16,8 +16,18 @@ The volatile registers, stacks, and private storage area are called the thread's
 
 ![[thread.png]]
 
+Here's an interesting fact about threads - There's a good chance that the execution of the thread and the loading of libraries might overlap, causing runtime errors where the thread fails to reference the required functions. To prevent this, there is something called a "Loader Lock", where the execution of the thread, when created, is paused until all the libraries are loaded by the process. After loading the libraries, the execution of the thread is resumed.
+
 # Internals
 
+## Various STructures
 
-
+### Thread Environment Block
+- Small memory range
+- Provides storage for thread-specific information
+	- Thread ID
+	- Stack range
+	- GetLastError
+	- TLS: Thread local storage
+- gs:[X] = [IA32_KERNEL_GS_BASE + X]
 
