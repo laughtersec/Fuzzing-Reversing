@@ -75,7 +75,6 @@ PROCESS ffff9b07df2da0c0
         ffff9885`c5e2f3a0 00007ffb`71042454     nt!KiSystemServiceCopyEnd+0x25 (TrapFrame @ ffff9885`c5e2f3a0)
         00000000`0014fbd8 00000000`00000000     0x00007ffb`71042454
 ```
-
 ### Retrieve handles used by a process
 
 ```d title:"It is a very long list"
