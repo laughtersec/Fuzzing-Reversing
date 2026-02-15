@@ -24,3 +24,4 @@ Memory management is done in distinct chunks called pages. This is because the h
 | x86 (PAE)    | 4 KB            | 2 MB            | 512                        |
 | x64          | 4 KB            | 2 MB            | 512                        |
 | ARM          | 4 KB            | 4 MB            | 1024                       |
+
