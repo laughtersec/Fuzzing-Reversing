@@ -25,3 +25,11 @@ Memory management is done in distinct chunks called pages. This is because the h
 | x64          | 4 KB            | 2 MB            | 512                        |
 | ARM          | 4 KB            | 4 MB            | 1024                       |
 
+# Shared Memory and Mapped Files
+Two virtual address spaces will make use of a DLL that is mapped in one address space. This means that the DLL's physical address will be the same throughout once some process requests it for the first time. The subsequent processes will map the DLL from this physical memory location to its virtual address space, making a copy of it for use within the process' virtual address space.
+
+Here is a not-so-perfect analogy: I (the process) take notes from (map from physical address) Windows Internals Part 1, a book (shared physical memory where the DLL resides), and store them in my own notebook (copy to my own virtual address space).
+
+The book is constant and universal, and people read it and take notes from it and do whatever with it as they please. Similarly, I take notes from a book and interpret it as I see fit.
+
+**Except** my notes aren't *identical* to what is written in the book, this is where the analogy fails :)
